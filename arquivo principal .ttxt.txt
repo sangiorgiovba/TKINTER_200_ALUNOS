@@ -1,0 +1,114 @@
+import pymysql
+from tkinter import *
+from tkinter import ttk
+from tkinter import messagebox
+import tkinter as tk
+
+def refreshTable():
+    my_tree.tag_configure('orow', background='#EEEEEE', font=('Arial', 12))
+    my_tree.grid(row=8, column=0, columnspan=5, rowspan=11, padx=10, pady=20)
+
+root = Tk()
+root.title("CADASTRO DE ALUNOS")
+root.geometry("1117x670")
+
+my_tree = ttk.Treeview(root)
+
+img = PhotoImage(file='D:\\tkinter_projeto\\icon.png')
+root.iconphoto(False,img)
+label = Label(root,text="Cadastro de alunos em tkinter",font=('arial bold',30))
+label.grid(row=0,column=0,columnspan=8,rowspan=2,padx=50,pady=40)
+
+
+estidLabel = Label(root, text="Estudante ID :", font=('Arial', 15))
+nomeLabel = Label(root, text="Nome :", font=('Arial', 15))
+s_nomeLabel = Label(root, text="S_Nome :", font=('Arial', 15))
+enderecoLabel = Label(root, text="Endereco :", font=('Arial', 15))
+telefoneLabel = Label(root, text="Telefone:", font=('Arial', 15))
+
+estidLabel.grid(row=3, column=0, columnspan=1, padx=50, pady=5)
+nomeLabel.grid(row=4, column=0, columnspan=1, padx=50, pady=5)
+s_nomeLabel.grid(row=5, column=0, columnspan=1, padx=50, pady=5)
+enderecoLabel.grid(row=6, column=0, columnspan=1, padx=50, pady=5)
+telefoneLabel.grid(row=7, column=0, columnspan=1, padx=50, pady=5)
+
+estidEntry = Entry(root, width=55, bd=1, font=('Arial', 15))
+nomeEntry = Entry(root, width=55, bd=1, font=('Arial', 15))
+s_nomeEntry = Entry(root, width=55, bd=1, font=('Arial', 15))
+enderecoEntry = Entry(root, width=55, bd=1, font=('Arial', 15))
+telefoneEntry = Entry(root, width=55, bd=1, font=('Arial', 15))
+
+estidEntry.grid(row=3, column=1, columnspan=4, padx=5, pady=0)
+nomeEntry.grid(row=4, column=1, columnspan=4, padx=5, pady=0)
+s_nomeEntry.grid(row=5, column=1, columnspan=4, padx=5, pady=0)
+enderecoEntry.grid(row=6, column=1, columnspan=4, padx=5, pady=0)
+telefoneEntry.grid(row=7, column=1, columnspan=4, padx=5, pady=0)
+
+def Limpar():
+    estidEntry.delete(0,'end')
+    nomeEntry.delete(0,'end')
+    s_nomeEntry.delete(0,'end')
+    enderecoEntry.delete(0,'end')
+    telefoneEntry.delete(0,'end')
+    estidEntry.focus_set()
+
+LimparBtn = Button(
+    root, text="Limpar Campos", padx=50, pady=5, width=8,
+    bd=1, font=('Arial', 15), bg="#F4FE82",  command=Limpar)
+LimparBtn.grid(row=0, column=5, columnspan=1, rowspan=2)
+
+
+
+cadastrarBtn = Button(
+    root, text="Cadastrar", padx=65, pady=25, width=10,
+    bd=1, font=('Arial', 15), bg="#84F894")  
+
+atualizarBtn = Button(
+    root, text="Atualizar", padx=65, pady=25, width=10,
+    bd=1, font=('Arial', 15), bg="#84E8F8")
+
+deletarBtn = Button(
+    root, text="Deletar", padx=65, pady=25, width=10,
+    bd=1, font=('Arial', 15), bg="#FF9999")
+
+pesquisarBtn = Button(
+    root, text="Pesquisar", padx=65, pady=25, width=10,
+    bd=1, font=('Arial', 15), bg="#F4FE82")
+resetarBtn = Button(
+
+    root, text="Resetar", padx=65, pady=25, width=10,
+    bd=1, font=('Arial', 15), bg="#F398FF")
+
+selecionarBtn = Button(
+    root, text="Selecionar", padx=65, pady=25, width=10,
+    bd=1, font=('Arial', 15), bg="#EEEEEE")
+
+cadastrarBtn.grid(row=3, column=5, columnspan=1, rowspan=2)
+atualizarBtn.grid(row=5, column=5, columnspan=1, rowspan=2)
+deletarBtn.grid(row=7, column=5, columnspan=1, rowspan=2)
+pesquisarBtn.grid(row=9, column=5, columnspan=1, rowspan=2)
+resetarBtn.grid(row=11, column=5, columnspan=1, rowspan=2)
+selecionarBtn.grid(row=13, column=5, columnspan=1, rowspan=2)
+
+style = ttk.Style()
+style.configure("Treeview.Heading",font=('Arial Bold', 15,))
+
+my_tree['columns'] = ("Est ID","Nome","S_Nome","Endereco","Telefone")
+
+my_tree.column("#0", width=0, stretch=NO)
+my_tree.column("Est ID", anchor=W, width=170)
+my_tree.column("Nome", anchor=W, width=150)
+my_tree.column("S_Nome", anchor=W, width=150)
+my_tree.column("Endereco", anchor=W, width=165)
+my_tree.column("Telefone", anchor=W, width=150)
+
+my_tree.heading("Est ID", text="Estudante ID", anchor=W)
+my_tree.heading("Nome", text="Nome", anchor=W)
+my_tree.heading("S_Nome", text="S_Nome", anchor=W)
+my_tree.heading("Endereco", text="Endereco", anchor=W)
+my_tree.heading("Telefone", text="Telefone", anchor=W)
+
+
+refreshTable()
+
+root.mainloop()

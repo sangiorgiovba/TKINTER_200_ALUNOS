@@ -1,0 +1,11 @@
+CREATE TABLE `estudantes` (
+  `ESTID` varchar(200) NOT NULL,
+  `NOME` varchar(200) NOT NULL,
+  `S_NOME` varchar(200) NOT NULL,
+  `ENDERECO` varchar(200) NOT NULL,
+  `TELEFONE` varchar(200) NOT NULL,
+   PRIMARY KEY (`ESTID`)
+);
+
+INSERT INTO `estudantes` (`ESTID`, `NOME`, `S_NOME`, `ENDERECO`, `TELEFONE`) VALUES
+('001', 'sang', 'sang', 'sang endereco', '15485245');
